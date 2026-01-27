@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SanAndras RP Karakter Generátor</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #1a1a1a;
+            color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: #2c2c2c;
+            padding: 20px 30px;
+            border-radius: 15px;
+            width: 350px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+        h1 {
+            text-align: center;
+            color: #00ffcc;
+        }
+        input, select, textarea, button {
+            width: 100%;
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+        button {
+            background: #00ffcc;
+            color: #1a1a1a;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #00e6b8;
+        }
+        .output {
+            margin-top: 15px;
+            padding: 10px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RP Karakter Generátor</h1>
+        <input type="text" id="name" placeholder="Karakter neve">
+        <input type="text" id="origin" placeholder="Honnan jött a karakter">
+        <select id="role">
+            <option value="">Válassz foglalkozást</option>
+            <option value="NAV">NAV</option>
+            <option value="Rendőrség">Rendőrség</option>
+            <option value="Mentő">Mentő</option>
+        </select>
+        <textarea id="bio" placeholder="Írj egy rövid leírást a karakteredről"></textarea>
+        <button onclick="generateCharacter()">Karakter generálása</button>
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        function generateCharacter() {
+            const name = document.getElementById('name').value.trim();
+            const origin = document.getElementById('origin').value.trim();
+            const role = document.getElementById('role').value;
+            const bio = document.getElementById('bio').value.trim();
+
+            if(!name || !origin || !role || !bio) {
+                alert('Tölts ki minden mezőt!');
+                return;
+            }
+
+            const outputText = `Karakter neve: ${name}\nHonnan jött: ${origin}\nFoglalkozás: ${role}\nLeírás:\n${bio}`;
+            document.getElementById('output').textContent = outputText;
+        }
+    </script>
+</body>
+</html>
